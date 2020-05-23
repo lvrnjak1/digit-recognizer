@@ -44,6 +44,12 @@ public class CanvasActivity extends AppCompatActivity implements ResponseListene
         System.out.println("Response received");
         System.out.println(response);
         Log.i("response", response);
+        try {
+            showAlertDialog(new JSONObject(response).getInt("solution"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void showAlertDialog(int solution) {
