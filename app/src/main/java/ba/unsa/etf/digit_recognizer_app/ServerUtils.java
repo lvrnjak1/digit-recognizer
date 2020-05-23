@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 public class ServerUtils {
 
-    private final String SOLVE_ENDPOINT = "http://digit-recognizer.eastus.cloudapp.azure.com/solve";
+    private static final String SOLVE_ENDPOINT = "http://137.117.105.201/solve";
 
     public void solve(String imageB64, ResponseListener responseListener) {
         SolveAsyncTask solveAsyncTask = new SolveAsyncTask();
