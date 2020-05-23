@@ -1,17 +1,12 @@
 package ba.unsa.etf.digit_recognizer_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import org.json.JSONException;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.ExecutionException;
-
-public class MainActivity extends AppCompatActivity implements ResponseListener{
+public class MainActivity extends AppCompatActivity implements ResponseListener, CanvasListener{
 
     private CanvasView canvasView;
     private ImageButton eraseBtn;
@@ -28,40 +23,18 @@ public class MainActivity extends AppCompatActivity implements ResponseListener{
     }
 
     private void setListeners(){
-        eraseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                canvasView.startNew();
-            }
-        });
-
-        solveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    new ServerUtils().solve(canvasView.encodeBitmapToBase64(), MainActivity.this);
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        eraseBtn.setOnClickListener(v -> canvasView.startNew());
+        solveButton.setOnClickListener(v -> canvasView.encodeBitmapToBase64(MainActivity.this));
     }
 
     @Override
     public void onResponseReceived(String response){
-//        int solution = 0;
-//        if(response != null) {
-//            try {
-//                solution = new JSONObject(response).getInt("solution");
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println(solution);
-//        }
         System.out.println("Response received");
+        System.out.println(response);
+    }
+
+    @Override
+    public void onCanvasGenerated(String base64) {
+        new ServerUtils().solve(base64, MainActivity.this);
     }
 }

@@ -1,18 +1,15 @@
 package ba.unsa.etf.digit_recognizer_app;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.util.AttributeSet;
-import android.util.Base64;
-import android.util.Log;
-import android.view.View;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.AttributeSet;
+import android.util.Base64;
 import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -84,12 +81,13 @@ public class CanvasView extends View {
         invalidate();
     }
 
-    public String encodeBitmapToBase64(){
+    public void encodeBitmapToBase64(CanvasListener listener){
         Bitmap toEncode = canvasBitmap;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        toEncode.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        //ovdje se moze skalirati nasla sam na netu kod al nisam ubacila :D
-        byte[] bytes = byteArrayOutputStream.toByteArray();
-        return Base64.encodeToString(bytes, Base64.DEFAULT);
+        new Thread(() -> {
+            toEncode.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byte[] bytes = byteArrayOutputStream.toByteArray();
+            listener.onCanvasGenerated(Base64.encodeToString(bytes, Base64.DEFAULT));
+        }).start();
     }
 }
