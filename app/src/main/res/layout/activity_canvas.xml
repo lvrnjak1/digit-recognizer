@@ -36,10 +36,18 @@
         android:id="@+id/drawing"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="3dp"
+
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:background="#000000" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="120dp"
+        android:textAlignment="center"
+        android:text="@string/you_draw_and_we_will_try_to_guess"
+        android:textSize="20sp" />
 </LinearLayout>

@@ -1,5 +1,7 @@
 package ba.unsa.etf.digit_recognizer_app;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,6 +10,7 @@ public class ServerUtils {
     private static final String SOLVE_ENDPOINT = "http://137.117.105.201/solve";
 
     public void solve(String imageB64, ResponseListener responseListener) {
+        Log.i("solve", "solving");
         SolveAsyncTask solveAsyncTask = new SolveAsyncTask();
         solveAsyncTask.setListener(responseListener); //ovo treba uraditi sa konstruktorom
         solveAsyncTask.execute(SOLVE_ENDPOINT, createJson(imageB64).toString());

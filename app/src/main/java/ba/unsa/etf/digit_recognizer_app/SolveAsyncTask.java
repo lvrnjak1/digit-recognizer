@@ -33,6 +33,7 @@ public class SolveAsyncTask extends AsyncTask<String, Void, String> {
                 String responseLine;
                 while((responseLine = br.readLine()) != null) response.append(responseLine.trim());
             }
+            Log.i("task", response.toString());
             return response.toString();
         } catch (Exception e) {
             Log.e(e.toString(), "Exception in AsyncTask");
@@ -42,6 +43,7 @@ public class SolveAsyncTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String response) {
+        Log.i("task", "on post execute");
         if(responseListener != null){
             responseListener.onResponseReceived(response);
         }

@@ -32,6 +32,7 @@ public class CanvasActivity extends AppCompatActivity implements ResponseListene
     private void setListeners(){
         eraseBtn.setOnClickListener(v -> canvasView.startNew());
         solveButton.setOnClickListener(v -> {
+            Log.i("listeners", "solve clicked");
             canvasView.startNew();
             canvasView.encodeBitmapToBase64(CanvasActivity.this);
         });
