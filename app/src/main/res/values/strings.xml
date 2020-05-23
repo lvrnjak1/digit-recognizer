@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">digit-recognizer-app</string>
+    <string name="solve">Solve</string>
+    <string name="erase">Start over</string>
+</resources>

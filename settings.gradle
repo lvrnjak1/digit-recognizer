@@ -1,0 +1,2 @@
+rootProject.name='digit-recognizer-app'
+include ':app'
