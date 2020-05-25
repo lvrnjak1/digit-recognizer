@@ -14,6 +14,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class CanvasView extends View {
 
@@ -83,8 +85,8 @@ public class CanvasView extends View {
 
     public void encodeBitmapToBase64(CanvasListener listener){
         Bitmap toEncode = canvasBitmap;
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         new Thread(() -> {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             toEncode.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] bytes = byteArrayOutputStream.toByteArray();
             listener.onCanvasGenerated(Base64.encodeToString(bytes, Base64.DEFAULT));

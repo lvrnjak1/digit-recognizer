@@ -33,7 +33,6 @@ public class CanvasActivity extends AppCompatActivity implements ResponseListene
         eraseBtn.setOnClickListener(v -> canvasView.startNew());
         solveButton.setOnClickListener(v -> {
             Log.i("listeners", "solve clicked");
-            canvasView.startNew();
             canvasView.encodeBitmapToBase64(CanvasActivity.this);
         });
         backButton.setOnClickListener(v -> finish());
@@ -44,6 +43,7 @@ public class CanvasActivity extends AppCompatActivity implements ResponseListene
         System.out.println("Response received");
         System.out.println(response);
         Log.i("response", response);
+        canvasView.startNew();
         try {
             showAlertDialog(new JSONObject(response).getInt("solution"));
         } catch (JSONException e) {
