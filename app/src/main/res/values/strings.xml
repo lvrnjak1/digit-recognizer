@@ -1,13 +1,26 @@
 <resources>
-    <string name="app_name">digit-recognizer-app</string>
+    <string name="app_name">Digit Recognizer</string>
     <string name="solve">Solve</string>
     <string name="erase">Start over</string>
     <string name="solution_popup_text">You have entered the number</string>
-    <string name="try_again">Oups, try again</string>
+    <string name="try_again">Oops, try again</string>
     <string name="draw_again">Draw again</string>
     <string name="try_it_out">Try it out</string>
     <string name="about_this_app">About this app</string>
     <string name="exit">Exit</string>
     <string name="back">Back</string>
     <string name="you_draw_and_we_will_try_to_guess">You draw and we will try to guess !!</string>
+    <string name="about"><![CDATA[Hi! Welcome to <b><i>Digit Recognizer</i></b>.
+    This app an Artificial Intelligence class project.
+    The app is simple in it\'s concept but rather intriguing.
+    <br/><br/>When you click the button <b>Try it out</b> from the main menu
+    you\'ll be taken to a canvas where you
+    can draw out a digit from 0 do 9. After you are done, click <b>Solve</b> and the app will try
+    to recognize the digit using a neuron network that has been trained on a significant data set
+    of 10000 images of handwritten digits. Make sure you are connected to the internet when using
+    the app as it uses it to communicate with our server.
+    <br/><br/>We hope you will have fun and we hope that this
+    app makes you want to research more about AI, neuron networks and image processing.
+    <br/><br/><i>This app was created by Denis Selimović & Lamija Vrnjak at the Faculty of
+     Electrical Engineering of Sarajevo.</i>]]></string>
 </resources>

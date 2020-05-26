@@ -8,9 +8,9 @@
 
     <Button
         android:id="@+id/btn_back"
-        android:layout_width="195dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
         android:text="@string/back"
         android:textAllCaps="false"
@@ -20,4 +20,17 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/about_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
