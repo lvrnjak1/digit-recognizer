@@ -39,7 +39,6 @@ public class CanvasActivity extends AppCompatActivity implements ResponseListene
 
     @Override
     public void onResponseReceived(String response){
-        canvasView.startNew();
         try {
             String solution = (response == null) ? "Server not available" : "You entered number " + new JSONObject(response).getInt("solution");
             showAlertDialog(solution);
