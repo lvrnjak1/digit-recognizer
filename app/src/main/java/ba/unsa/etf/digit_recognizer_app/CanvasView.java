@@ -14,8 +14,6 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class CanvasView extends View {
 
