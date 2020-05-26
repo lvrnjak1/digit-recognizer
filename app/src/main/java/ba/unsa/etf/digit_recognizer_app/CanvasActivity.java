@@ -40,23 +40,20 @@ public class CanvasActivity extends AppCompatActivity implements ResponseListene
 
     @Override
     public void onResponseReceived(String response){
-        System.out.println("Response received");
-        System.out.println(response);
-        Log.i("response", response);
         canvasView.startNew();
         try {
-            showAlertDialog(new JSONObject(response).getInt("solution"));
+            String solution = (response == null) ? "Server not available" : "You enter number " + Integer.toString(new JSONObject(response).getInt("solution"));
+            showAlertDialog(solution);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void showAlertDialog(int solution) {
+    private void showAlertDialog(String solution) {
         Log.i("popup", "popup");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("You have entered the number");
-        builder.setMessage(solution + "!");
+        builder.setTitle(solution);
         builder.setPositiveButton("Draw again", (dialog, which) -> {
             canvasView.startNew();
             dialog.dismiss();

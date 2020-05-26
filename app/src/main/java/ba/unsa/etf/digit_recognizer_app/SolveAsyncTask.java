@@ -4,9 +4,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -21,7 +23,8 @@ public class SolveAsyncTask extends AsyncTask<String, Void, String> {
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
-
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(8000);
             String body = params[1];
             try(OutputStream outputStream = connection.getOutputStream()) {
                 byte[] input = body.getBytes(StandardCharsets.UTF_8);
@@ -35,7 +38,7 @@ public class SolveAsyncTask extends AsyncTask<String, Void, String> {
             }
             Log.i("task", response.toString());
             return response.toString();
-        } catch (Exception e) {
+        } catch (IOException e) {
             Log.e(e.toString(), "Exception in AsyncTask");
         }
         return null;
